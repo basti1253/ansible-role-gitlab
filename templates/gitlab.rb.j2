@@ -15,7 +15,7 @@ gitlab_rails['gitlab_email_reply_to'] = "{{ gitlab_email_reply_to }}"
 gitlab_rails['gitlab_default_theme'] = "{{ gitlab_default_theme }}"
 
 # Whether to redirect http to https.
-nginx['redirect_http_to_https'] = {{ gitlab_redirect_http_to_https }}
+nginx['redirect_http_to_https'] = {{ gitlab_redirect_http_to_https | lower }}
 nginx['ssl_certificate'] = "{{ gitlab_ssl_certificate }}"
 nginx['ssl_certificate_key'] = "{{ gitlab_ssl_certificate_key }}"
 
@@ -27,7 +27,7 @@ gitlab_rails['backup_path'] = "{{ gitlab_backup_path }}"
 
 # These settings are documented in more detail at
 # https://gitlab.com/gitlab-org/gitlab-ce/blob/master/config/gitlab.yml.example#L118
-gitlab_rails['ldap_enabled'] = {{ gitlab_ldap_enabled }}
+gitlab_rails['ldap_enabled'] = {{ gitlab_ldap_enabled | lower }}
 gitlab_rails['ldap_host'] = '{{ gitlab_ldap_host }}'
 gitlab_rails['ldap_port'] = {{ gitlab_ldap_port }}
 gitlab_rails['ldap_uid'] = '{{ gitlab_ldap_uid }}'
@@ -43,13 +43,13 @@ gitlab_rails['ldap_base'] = '{{ gitlab_ldap_base }}'
 nginx['listen_port'] = "{{ gitlab_nginx_listen_port }}"
 {% endif %}
 {% if gitlab_nginx_listen_https is defined %}
-nginx['listen_https'] = {{ gitlab_nginx_listen_https }}
+nginx['listen_https'] = {{ gitlab_nginx_listen_https | lower }}
 {% endif %}
 
 # Use smtp instead of sendmail/postfix
 # More details and example configuration at
 # https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/settings/smtp.md
-gitlab_rails['smtp_enable'] = {{ gitlab_smtp_enable }}
+gitlab_rails['smtp_enable'] = {{ gitlab_smtp_enable | lower }}
 gitlab_rails['smtp_address'] = '{{ gitlab_smtp_address }}'
 gitlab_rails['smtp_port'] = {{ gitlab_smtp_port }}
 gitlab_rails['smtp_user_name'] = '{{ gitlab_smtp_user_name }}'
